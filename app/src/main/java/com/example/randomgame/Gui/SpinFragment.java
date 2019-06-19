@@ -16,6 +16,7 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
@@ -44,16 +45,12 @@ public class SpinFragment extends Fragment {
 
     @BindView(R.id.spinning_wheel1)
     ImageView spinningWheel1;
-    @BindView(R.id.rotate_btn1)
-    Button rotateBtn1;
+    //    @BindView(R.id.rotate_btn1)
+//    TextView rotateBtn1;
     @BindView(R.id.spinning_wheel2)
     ImageView spinningWheel2;
-    @BindView(R.id.rotate_btn2)
-    Button rotateBtn2;
     @BindView(R.id.spinning_wheel3)
     ImageView spinningWheel3;
-    @BindView(R.id.rotate_btn3)
-    Button rotateBtn3;
     @BindView(R.id.spin_view_flipper)
     ViewFlipper spinViewFlipper;
     Unbinder unbinder;
@@ -63,6 +60,13 @@ public class SpinFragment extends Fragment {
     ImageView spinIcon2;
     @BindView(R.id.spin_icon3)
     ImageView spinIcon3;
+    @BindView(R.id.rotate_btn1)
+    TextView rotateBtn1;
+    @BindView(R.id.rotate_btn2)
+    TextView rotateBtn2;
+    @BindView(R.id.rotate_btn3)
+    TextView rotateBtn3;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,17 +80,9 @@ public class SpinFragment extends Fragment {
                 return true;
             }
         });
-        
+
         viewFlipper = view.findViewById(R.id.spin_view_flipper);
         selectedWheel = view.findViewById(R.id.spinning_wheel1);
-
-        spinBtn = view.findViewById(R.id.rotate_btn1);
-        spinBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         unbinder = ButterKnife.bind(this, view);
         return view;
@@ -137,7 +133,7 @@ public class SpinFragment extends Fragment {
                             else if (currentWheel == 2)
                                 valueWon = 50;
                             else
-                                valueWon =100;
+                                valueWon = 100;
                             break;
                         case 2:
                             if (currentWheel == 1)
@@ -207,7 +203,7 @@ public class SpinFragment extends Fragment {
 
                 }
             });
-            switch (currentWheel){
+            switch (currentWheel) {
                 case 1:
                     spinningWheel1.startAnimation(animation);
                     break;
