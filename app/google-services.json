@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "113852093343",
+    "firebase_url": "https://random-game-5.firebaseio.com",
+    "project_id": "random-game-5",
+    "storage_bucket": "random-game-5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113852093343:android:6505ed0e32c40c87",
+        "android_client_info": {
+          "package_name": "com.example.randomgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113852093343-2o4jnkgo0n0ssjstp84t956g7n6tt29n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.randomgame",
+            "certificate_hash": "bc14c25c0e70b0e519955d3aa2b75f58dbf48642"
+          }
+        },
+        {
+          "client_id": "113852093343-34b0d6pqmgdiootcqet82juru68jretl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUzgN9XPipcmzoS6_h-Hq04iIKK0NQu5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113852093343-34b0d6pqmgdiootcqet82juru68jretl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

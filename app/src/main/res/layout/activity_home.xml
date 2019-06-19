@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_blue"
+    android:orientation="vertical"
+    tools:context=".Gui.HomeActivity">
+
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimen_12dp">
+
+        <ImageView
+            android:id="@+id/profile_btn"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginEnd="@dimen/dimen_28dp"
+            android:src="@drawable/profile_icon" />
+
+        <ImageView
+            android:id="@+id/lang_btn"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginEnd="@dimen/dimen_28dp"
+            android:tag="1"
+            android:src="@drawable/english_icon" />
+
+        <ImageView
+            android:id="@+id/leadrboard_btn"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="@dimen/dimen_28dp"
+            android:src="@drawable/leaderboard" />
+
+        <ImageView
+            android:id="@+id/sound_btn"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginEnd="@dimen/dimen_28dp"
+            android:src="@drawable/sound_icon" />
+
+        <ImageView
+            android:id="@+id/points_btn"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:src="@drawable/points_icon" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_bar"
+        android:layout_below="@+id/top_bar" />
+
+    <RelativeLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimen_12dp">
+
+        <ImageView
+            android:id="@+id/settings_btn"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:src="@drawable/settings_icon" />
+
+        <ImageView
+            android:id="@+id/close_btn"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/close_icon" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

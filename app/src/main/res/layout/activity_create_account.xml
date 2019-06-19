@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_blue"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Gui.CreateAccount.CreateAccountActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_blue"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/edittext_bg">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:src="@drawable/user_icon" />
+
+            <EditText
+                android:id="@+id/name_ET"
+                style="@style/EditTextStyle"
+                android:inputType="textCapWords"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Name" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_32dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_32dp"
+            android:background="@drawable/edittext_bg">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_20dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:src="@drawable/email_icon" />
+
+            <EditText
+                android:id="@+id/email_ET"
+                style="@style/EditTextStyle"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Email" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/edittext_bg">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:src="@drawable/pw_icon" />
+
+            <EditText
+                android:id="@+id/password_ET"
+                style="@style/EditTextStyle"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Password" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/edittext_bg">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:src="@drawable/pw_icon" />
+
+            <EditText
+                android:id="@+id/confirm_password_ET"
+                style="@style/EditTextStyle"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Confirm Password" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/edittext_bg">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:src="@drawable/phone_icon" />
+
+            <EditText
+                android:id="@+id/phone_ET"
+                style="@style/EditTextStyle"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Phone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/edittext_bg">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/world_icon" />
+
+            <EditText
+                android:id="@+id/country_ET"
+                style="@style/EditTextStyle"
+                android:inputType="textCapWords"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Country" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/create_acc_btn"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:background="@drawable/btn_bg"
+            android:text="Create Account"
+            android:textColor="@color/white" />
+
+        <!--<com.google.android.gms.common.SignInButton
+            android:id="@+id/create_acc_google_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp" />-->
+
+        <ImageView
+            android:id="@+id/create_acc_google_btn"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:src="@drawable/google_icon"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/create_acc_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SpinKitView.Large.Circle"
+            android:visibility="gone"
+            app:SpinKit_Color="@color/colorAccent"/>
+
+    </FrameLayout>
+
+</FrameLayout>
