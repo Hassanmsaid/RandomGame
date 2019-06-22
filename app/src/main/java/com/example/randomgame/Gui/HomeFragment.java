@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.randomgame.Gui.Slot.SlotFragment;
 import com.example.randomgame.R;
 
 import butterknife.BindView;
@@ -18,7 +19,6 @@ import butterknife.Unbinder;
 
 
 public class HomeFragment extends Fragment {
-
 
     @BindView(R.id.home_dice)
     ImageView homeDice;
@@ -53,18 +53,21 @@ public class HomeFragment extends Fragment {
 
     @OnClick({R.id.home_dice, R.id.home_lucky, R.id.home_spin, R.id.home_slot})
     public void onViewClicked(View view) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
         switch (view.getId()) {
             case R.id.home_dice:
                 break;
             case R.id.home_lucky:
                 break;
             case R.id.home_spin:
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.container, new SpinFragment())
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.home_slot:
+                ft.replace(R.id.container, new SlotFragment())
+                        .addToBackStack(null)
+                        .commit();
                 break;
         }
     }

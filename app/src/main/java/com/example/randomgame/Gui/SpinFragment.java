@@ -45,8 +45,6 @@ public class SpinFragment extends Fragment {
 
     @BindView(R.id.spinning_wheel1)
     ImageView spinningWheel1;
-    //    @BindView(R.id.rotate_btn1)
-//    TextView rotateBtn1;
     @BindView(R.id.spinning_wheel2)
     ImageView spinningWheel2;
     @BindView(R.id.spinning_wheel3)
@@ -66,7 +64,6 @@ public class SpinFragment extends Fragment {
     TextView rotateBtn2;
     @BindView(R.id.rotate_btn3)
     TextView rotateBtn3;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -300,8 +297,6 @@ public class SpinFragment extends Fragment {
                     viewFlipper.showPrevious();
                 }
             }
-
-//            Toast.makeText(getContext(), String.valueOf(viewFlipper.getDisplayedChild()), Toast.LENGTH_SHORT).show();
 
             resetAllIcons();
 
