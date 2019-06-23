@@ -27,6 +27,8 @@ public class SlotFragment extends Fragment implements ISlotEventEnd {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_slot, container, false);
 
+        //Clone test
+
         slotBtn1 = view.findViewById(R.id.slot_btn1);
         slotImage1 = view.findViewById(R.id.slot_img1);
         slotImage2 = view.findViewById(R.id.slot_img2);
