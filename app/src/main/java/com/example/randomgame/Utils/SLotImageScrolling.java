@@ -9,6 +9,8 @@ import android.widget.ImageView;
 
 import com.example.randomgame.R;
 
+import java.util.Random;
+
 public class SLotImageScrolling extends FrameLayout {
 
     public static int ANIMATION_DURATION = 200, NUM_OF_IMAGES = 6;
@@ -35,8 +37,35 @@ public class SLotImageScrolling extends FrameLayout {
         currentImage = findViewById(R.id.current_image);
         nextImage = findViewById(R.id.next_image);
         nextImage.setTranslationY(getHeight());
-        
-        currentImage.setImageResource(R.drawable.wheel_marker);
+
+        int randomInitImage = new Random().nextInt((6 - 1) + 1) + 1;
+        switch (randomInitImage){
+            case 1:
+                currentImage.setImageResource(R.drawable.slot_image1);
+                nextImage.setImageResource(R.drawable.slot_image1);
+                break;
+            case 2:
+                currentImage.setImageResource(R.drawable.slot_image2);
+                nextImage.setImageResource(R.drawable.slot_image2);
+                break;
+            case 3:
+                currentImage.setImageResource(R.drawable.slot_image3);
+                nextImage.setImageResource(R.drawable.slot_image3);
+                break;
+            case 4:
+                currentImage.setImageResource(R.drawable.slot_image4);
+                nextImage.setImageResource(R.drawable.slot_image4);
+                break;
+            case 5:
+                currentImage.setImageResource(R.drawable.slot_image5);
+                nextImage.setImageResource(R.drawable.slot_image5);
+                break;
+            case 6:
+                currentImage.setImageResource(R.drawable.slot_image6);
+                nextImage.setImageResource(R.drawable.slot_image6);
+                break; 
+        }
+//        currentImage.setImageResource();
     }
 
     public void setValueRandom(final int image, final int rotateCount) {
@@ -80,7 +109,7 @@ public class SLotImageScrolling extends FrameLayout {
     private void setImage(ImageView imageView, int value) {
         switch (value) {
             case 1:
-                imageView.setImageResource(R.drawable.wheel_marker);
+                imageView.setImageResource(R.drawable.slot_image1);
                 break;
             case 2:
                 imageView.setImageResource(R.drawable.slot_image2);
@@ -89,17 +118,40 @@ public class SLotImageScrolling extends FrameLayout {
                 imageView.setImageResource(R.drawable.slot_image3);
                 break;
             case 4:
-                imageView.setImageResource(R.drawable.slot_image1);
+                imageView.setImageResource(R.drawable.slot_image4);
                 break;
             case 5:
-                imageView.setImageResource(R.drawable.french_icon);
+                imageView.setImageResource(R.drawable.slot_image5);
                 break;
             case 6:
-                imageView.setImageResource(R.drawable.logout_icon);
+                imageView.setImageResource(R.drawable.slot_image6);
                 break;
         }
         imageView.setTag(value);
         lastResult = value;
+    }
+
+    public void setInitialImage(ImageView imageView, int value) {
+        switch (value) {
+            case 1:
+                imageView.setImageResource(R.drawable.slot_image1);
+                break;
+            case 2:
+                imageView.setImageResource(R.drawable.slot_image2);
+                break;
+            case 3:
+                imageView.setImageResource(R.drawable.slot_image3);
+                break;
+            case 4:
+                imageView.setImageResource(R.drawable.slot_image4);
+                break;
+            case 5:
+                imageView.setImageResource(R.drawable.slot_image5);
+                break;
+            case 6:
+                imageView.setImageResource(R.drawable.slot_image6);
+                break;
+        }
     }
 
     public int getValue() {
