@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.example.randomgame.Gui.Register.LoginActivity;
+import com.example.randomgame.Gui.Login.LoginActivity;
 import com.example.randomgame.R;
 import com.google.firebase.auth.FirebaseAuth;
 

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.randomgame.Gui.Dice.DiceFragment;
 import com.example.randomgame.Gui.Slot.SlotFragment;
 import com.example.randomgame.R;
 
@@ -56,6 +57,9 @@ public class HomeFragment extends Fragment {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         switch (view.getId()) {
             case R.id.home_dice:
+                ft.replace(R.id.container, new DiceFragment())
+                        .addToBackStack(null)
+                        .commit();
                 break;
             case R.id.home_lucky:
                 break;

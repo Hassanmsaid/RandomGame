@@ -1,4 +1,4 @@
-package com.example.randomgame.Gui.Register;
+package com.example.randomgame.Gui.Login;
 
 public interface IloginView {
     void loginSuccess();

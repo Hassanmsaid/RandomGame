@@ -32,8 +32,6 @@ import butterknife.Unbinder;
 public class SpinFragment extends Fragment {
 
     GestureDetector gestureDetector;
-
-    Button spinBtn;
     ImageView selectedWheel;
     ViewFlipper viewFlipper;
 
@@ -80,7 +78,6 @@ public class SpinFragment extends Fragment {
 
         viewFlipper = view.findViewById(R.id.spin_view_flipper);
         selectedWheel = view.findViewById(R.id.spinning_wheel1);
-
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -91,8 +88,7 @@ public class SpinFragment extends Fragment {
         CustomGestureDetector customGestureDetector = new CustomGestureDetector();
         gestureDetector = new GestureDetector(getContext(), customGestureDetector);
         resetAllIcons();
-        spinIcon1.getLayoutParams().width = 150;
-        spinIcon1.getLayoutParams().height = 150;
+        setIconsSize(spinIcon1, 150);
     }
 
     @Override
@@ -235,14 +231,13 @@ public class SpinFragment extends Fragment {
                     viewFlipper.setOutAnimation(getContext(), R.anim.slide_out_left);
                     viewFlipper.setDisplayedChild(1);
                     resetAllIcons();
-                    setIconsSize(spinIcon2, 150);
                 } else if (currentWheel == 2) {
                     viewFlipper.setInAnimation(getContext(), android.R.anim.slide_in_left);
                     viewFlipper.setOutAnimation(getContext(), android.R.anim.slide_out_right);
                     viewFlipper.setDisplayedChild(1);
                     resetAllIcons();
-                    setIconsSize(spinIcon2, 150);
                 }
+                setIconsSize(spinIcon2, 150);
                 break;
             case R.id.spin_icon3:
                 if (currentWheel == 0 || currentWheel == 1) {
@@ -271,7 +266,7 @@ public class SpinFragment extends Fragment {
         setIconsSize(spinIcon3, 100);
     }
 
-    public void setIconsSize(View view, int dimen) {
+    public static void setIconsSize(View view, int dimen) {
         view.getLayoutParams().width = dimen;
         view.getLayoutParams().height = dimen;
     }
@@ -311,7 +306,6 @@ public class SpinFragment extends Fragment {
                     setIconsSize(spinIcon3, 150);
                     break;
             }
-
             return super.onFling(e1, e2, velocityX, velocityY);
         }
     }

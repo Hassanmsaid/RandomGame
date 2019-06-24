@@ -8,47 +8,170 @@
     android:orientation="vertical"
     tools:context=".Gui.Slot.SlotFragment">
 
-    <FrameLayout
+    <ViewFlipper
+        android:id="@+id/slot_view_flipper"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/slot">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_12dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <com.example.randomgame.Utils.SLotImageScrolling
-                android:id="@+id/slot_img1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/slot">
 
-            <com.example.randomgame.Utils.SLotImageScrolling
-                android:id="@+id/slot_img2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
 
-            <com.example.randomgame.Utils.SLotImageScrolling
-                android:id="@+id/slot_img3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                    <com.example.randomgame.Utils.SLotImageScrolling
+                        android:id="@+id/slot1_img1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.randomgame.Utils.SLotImageScrolling
+                        android:id="@+id/slot1_img2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.randomgame.Utils.SLotImageScrolling
+                        android:id="@+id/slot1_img3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/slot_btn1"
+                style="@style/PlayButtonStyle"
+                android:text="Start" />
 
         </LinearLayout>
 
-    </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/slot_btn1"
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/slot">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.example.randomgame.Utils.SLotImageScrolling
+                        android:id="@+id/slot2_img1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.randomgame.Utils.SLotImageScrolling
+                        android:id="@+id/slot2_img2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.randomgame.Utils.SLotImageScrolling
+                        android:id="@+id/slot2_img3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/slot_btn2"
+                style="@style/PlayButtonStyle"
+                android:text="Start" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/slot">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.example.randomgame.Utils.SLotImageScrolling
+                        android:id="@+id/slot3_img1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.randomgame.Utils.SLotImageScrolling
+                        android:id="@+id/slot3_img2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.randomgame.Utils.SLotImageScrolling
+                        android:id="@+id/slot3_img3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/slot_btn3"
+                style="@style/PlayButtonStyle"
+                android:text="Start" />
+
+        </LinearLayout>
+
+    </ViewFlipper>
+
+    <LinearLayout
         android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:textSize="@dimen/dimen_20dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_20dp"
-        android:textAlignment="center"
-        android:paddingTop="@dimen/dimen_8dp"
-        android:textStyle="bold"
-        android:background="@drawable/button_bg"
-        android:text="Start"
-        android:textColor="@color/white" />
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/slot_icon1"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:src="@drawable/slot_icon1" />
+
+        <ImageView
+            android:id="@+id/slot_icon2"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:src="@drawable/slot_icon2" />
+
+        <ImageView
+            android:id="@+id/slot_icon3"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:src="@drawable/slot_icon3" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
-import com.example.randomgame.Gui.Register.LoginActivity;
+import com.example.randomgame.Gui.Login.LoginActivity;
 import com.example.randomgame.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

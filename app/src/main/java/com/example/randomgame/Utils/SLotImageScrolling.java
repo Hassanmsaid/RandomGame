@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class SLotImageScrolling extends FrameLayout {
 
-    public static int ANIMATION_DURATION = 200, NUM_OF_IMAGES = 6;
+    public static int ANIMATION_DURATION = 20, NUM_OF_IMAGES = 6;
     public ImageView currentImage, nextImage;
     public int lastResult = 0, oldValue = 0;
     public ISlotEventEnd slotEventEnd;
@@ -65,7 +65,6 @@ public class SLotImageScrolling extends FrameLayout {
                 nextImage.setImageResource(R.drawable.slot_image6);
                 break; 
         }
-//        currentImage.setImageResource();
     }
 
     public void setValueRandom(final int image, final int rotateCount) {
