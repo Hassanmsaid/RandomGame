@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.example.randomgame.Gui.Login.LoginActivity;
+import com.example.randomgame.Gui.Splash.SplashActivity;
 import com.example.randomgame.R;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -80,9 +81,9 @@ public class HomeActivity extends AppCompatActivity {
                 break;
         }
 
-        if (SplashActivity.FIRS_TIME) {
+        if (SplashActivity.FIRST_TIME) {
             setLanguage();
-            SplashActivity.FIRS_TIME = false;
+            SplashActivity.FIRST_TIME = false;
         }
 
     }
@@ -160,8 +161,6 @@ public class HomeActivity extends AppCompatActivity {
         editor.putString("current_lang", localeName);
         editor.apply();
 
-//                Toast.makeText(HomeActivity.this, "Local name: " + localeName + " " + ", Current lang: " + currentLanguage,
-//                        Toast.LENGTH_SHORT).show();
         Intent refreshIntent = new Intent(HomeActivity.this, HomeActivity.class);
         startActivity(refreshIntent);
         finish();

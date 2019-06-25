@@ -130,29 +130,6 @@ public class SLotImageScrolling extends FrameLayout {
         lastResult = value;
     }
 
-    public void setInitialImage(ImageView imageView, int value) {
-        switch (value) {
-            case 1:
-                imageView.setImageResource(R.drawable.slot_image1);
-                break;
-            case 2:
-                imageView.setImageResource(R.drawable.slot_image2);
-                break;
-            case 3:
-                imageView.setImageResource(R.drawable.slot_image3);
-                break;
-            case 4:
-                imageView.setImageResource(R.drawable.slot_image4);
-                break;
-            case 5:
-                imageView.setImageResource(R.drawable.slot_image5);
-                break;
-            case 6:
-                imageView.setImageResource(R.drawable.slot_image6);
-                break;
-        }
-    }
-
     public int getValue() {
         return Integer.parseInt(nextImage.getTag().toString());
     }

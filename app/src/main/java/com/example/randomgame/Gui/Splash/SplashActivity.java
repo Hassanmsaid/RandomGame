@@ -1,4 +1,4 @@
-package com.example.randomgame.Gui;
+package com.example.randomgame.Gui.Splash;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
+import com.example.randomgame.Gui.HomeActivity;
 import com.example.randomgame.Gui.Login.LoginActivity;
 import com.example.randomgame.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
-    public static boolean FIRS_TIME = true;
+    public static boolean FIRST_TIME = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

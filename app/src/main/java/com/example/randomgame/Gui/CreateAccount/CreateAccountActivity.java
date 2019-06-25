@@ -101,8 +101,6 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
 
                 if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(pw) && !TextUtils.isEmpty(confirmPw)
                         && pw.equals(confirmPw)) {
-                    createAccProgress.setVisibility(View.VISIBLE);
-//                    createAccEmailPassword(email, pw);
                     presenter.createAccEmailPassword(email, pw, mAuth, this);
 
                 }

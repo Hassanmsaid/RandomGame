@@ -20,6 +20,7 @@ public class CreateAccountPresenter {
     }
 
     public void createAccEmailPassword(String email, String pw, FirebaseAuth mAuth, Context context) {
+        view.loading();
         mAuth.createUserWithEmailAndPassword(email, pw)
                 .addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
                     @Override
