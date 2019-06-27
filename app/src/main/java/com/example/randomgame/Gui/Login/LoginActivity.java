@@ -1,9 +1,13 @@
 package com.example.randomgame.Gui.Login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -19,6 +23,8 @@ import com.example.randomgame.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -30,6 +36,8 @@ public class LoginActivity extends AppCompatActivity implements IloginView {
     private LoginPresenter presenter;
     private FirebaseUser currentUser;
     private ProgressBar progressBar;
+    Locale myLocale;
+
 
     @BindView(R.id.login_email_ET)
     EditText loginEmailET;
@@ -47,16 +55,14 @@ public class LoginActivity extends AppCompatActivity implements IloginView {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+        SharedPreferences preferences = getSharedPreferences("lang_pref", MODE_PRIVATE);
+        String currentLanguage = preferences.getString("current_lang", "en");
+        //setLocale(currentLanguage);
+        Toast.makeText(this, currentLanguage, Toast.LENGTH_SHORT).show();
+
         presenter = new LoginPresenter(this, this);
         mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.login_progress);
-
-        /*new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class));
-            }
-        }, 2000);*/
     }
 
     @Override
@@ -79,36 +85,13 @@ public class LoginActivity extends AppCompatActivity implements IloginView {
                 pw = loginPasswordET.getText().toString();
 
                 if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pw)) {
-//                    login(email, pw);
                     presenter.login(email, pw, mAuth, this);
-                }
-                else{
+                } else {
                     Toast.makeText(this, "Check email & password then try again", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
     }
-
-    /*public void login(String email, String pw) {
-        mAuth.signInWithEmailAndPassword(email, pw)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                            Toast.makeText(LoginActivity.this, "Login success!", Toast.LENGTH_SHORT).show();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }*/
 
     @Override
     public void loginSuccess() {
@@ -130,6 +113,15 @@ public class LoginActivity extends AppCompatActivity implements IloginView {
     @Override
     public void loading() {
         progressBar.setVisibility(View.VISIBLE);
+    }
+
+    public void setLocale(String localeName) {
+        myLocale = new Locale(localeName);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
     }
 }
 

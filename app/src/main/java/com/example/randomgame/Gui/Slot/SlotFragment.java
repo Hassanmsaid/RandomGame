@@ -17,7 +17,7 @@ import android.widget.ViewFlipper;
 
 import com.example.randomgame.R;
 import com.example.randomgame.Utils.ISlotEventEnd;
-import com.example.randomgame.Utils.SLotImageScrolling;
+import com.example.randomgame.Utils.SlotImageScrolling;
 
 import java.util.Random;
 
@@ -34,27 +34,27 @@ public class SlotFragment extends Fragment implements ISlotEventEnd {
     GestureDetector gestureDetector;
 
     @BindView(R.id.slot1_img1)
-    SLotImageScrolling slot1Img1;
+    SlotImageScrolling slot1Img1;
     @BindView(R.id.slot1_img2)
-    SLotImageScrolling slot1Img2;
+    SlotImageScrolling slot1Img2;
     @BindView(R.id.slot1_img3)
-    SLotImageScrolling slot1Img3;
+    SlotImageScrolling slot1Img3;
     @BindView(R.id.slot_btn1)
     TextView slotBtn1;
     @BindView(R.id.slot2_img1)
-    SLotImageScrolling slot2Img1;
+    SlotImageScrolling slot2Img1;
     @BindView(R.id.slot2_img2)
-    SLotImageScrolling slot2Img2;
+    SlotImageScrolling slot2Img2;
     @BindView(R.id.slot2_img3)
-    SLotImageScrolling slot2Img3;
+    SlotImageScrolling slot2Img3;
     @BindView(R.id.slot_btn2)
     TextView slotBtn2;
     @BindView(R.id.slot3_img1)
-    SLotImageScrolling slot3Img1;
+    SlotImageScrolling slot3Img1;
     @BindView(R.id.slot3_img2)
-    SLotImageScrolling slot3Img2;
+    SlotImageScrolling slot3Img2;
     @BindView(R.id.slot3_img3)
-    SLotImageScrolling slot3Img3;
+    SlotImageScrolling slot3Img3;
     @BindView(R.id.slot_btn3)
     TextView slotBtn3;
     @BindView(R.id.slot_view_flipper)
@@ -134,29 +134,29 @@ public class SlotFragment extends Fragment implements ISlotEventEnd {
 
         switch (view.getId()) {
             case R.id.slot_btn1:
-                slot1Img1.setValueRandom(new Random().nextInt(SLotImageScrolling.NUM_OF_IMAGES),
+                slot1Img1.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
                         new Random().nextInt((50 - 30) + 1) + 30);
-                slot1Img2.setValueRandom(new Random().nextInt(SLotImageScrolling.NUM_OF_IMAGES),
+                slot1Img2.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
                         new Random().nextInt((50 - 30) + 1) + 30);
-                slot1Img3.setValueRandom(new Random().nextInt(SLotImageScrolling.NUM_OF_IMAGES),
+                slot1Img3.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
                         new Random().nextInt((50 - 30) + 1) + 30);
                 slotBtn1.setClickable(false);
                 break;
             case R.id.slot_btn2:
-                slot2Img1.setValueRandom(new Random().nextInt(SLotImageScrolling.NUM_OF_IMAGES),
+                slot2Img1.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
                         new Random().nextInt((50 - 30) + 1) + 30);
-                slot2Img2.setValueRandom(new Random().nextInt(SLotImageScrolling.NUM_OF_IMAGES),
+                slot2Img2.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
                         new Random().nextInt((50 - 30) + 1) + 30);
-                slot2Img3.setValueRandom(new Random().nextInt(SLotImageScrolling.NUM_OF_IMAGES),
+                slot2Img3.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
                         new Random().nextInt((50 - 30) + 1) + 30);
                 slotBtn2.setClickable(false);
                 break;
             case R.id.slot_btn3:
-                slot3Img1.setValueRandom(new Random().nextInt(SLotImageScrolling.NUM_OF_IMAGES),
+                slot3Img1.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
                         new Random().nextInt((50 - 30) + 1) + 30);
-                slot3Img2.setValueRandom(new Random().nextInt(SLotImageScrolling.NUM_OF_IMAGES),
+                slot3Img2.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
                         new Random().nextInt((50 - 30) + 1) + 30);
-                slot3Img3.setValueRandom(new Random().nextInt(SLotImageScrolling.NUM_OF_IMAGES),
+                slot3Img3.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
                         new Random().nextInt((50 - 30) + 1) + 30);
                 slotBtn3.setClickable(false);
                 break;

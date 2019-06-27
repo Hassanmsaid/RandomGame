@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">Random Game</string>
     <string name="rotate_btn_txt">دوران</string>
+    <string name="login_btn">دخول</string>
+    <string name="roll_btn">ارمى</string>
 </resources>

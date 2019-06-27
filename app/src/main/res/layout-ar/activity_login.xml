@@ -37,7 +37,6 @@
                 android:layout_marginStart="15dp"
                 android:src="@drawable/email_icon" />
 
-
             <EditText
                 android:id="@+id/login_email_ET"
                 style="@style/EditTextStyle"
@@ -84,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:background="@drawable/btn_bg"
-            android:text="@string/login_btn"
+            android:text="Login"
             android:textColor="@color/white" />
 
         <TextView
@@ -119,6 +118,7 @@
                 android:src="@drawable/fb_icon" />
 
         </LinearLayout>
+
 
     </LinearLayout>
 

@@ -85,7 +85,6 @@ public class HomeActivity extends AppCompatActivity {
             setLanguage();
             SplashActivity.FIRST_TIME = false;
         }
-
     }
 
     public void setLanguage() {

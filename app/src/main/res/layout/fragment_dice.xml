@@ -39,7 +39,7 @@
             <TextView
                 android:id="@+id/dice_btn1"
                 style="@style/PlayButtonStyle"
-                android:text="Roll" />
+                android:text="@string/roll_btn" />
 
         </LinearLayout>
 

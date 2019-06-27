@@ -11,7 +11,7 @@ import com.example.randomgame.R;
 
 import java.util.Random;
 
-public class SLotImageScrolling extends FrameLayout {
+public class SlotImageScrolling extends FrameLayout {
 
     public static int ANIMATION_DURATION = 20, NUM_OF_IMAGES = 6;
     public ImageView currentImage, nextImage;
@@ -22,12 +22,12 @@ public class SLotImageScrolling extends FrameLayout {
         this.slotEventEnd = slotEventEnd;
     }
 
-    public SLotImageScrolling(Context context) {
+    public SlotImageScrolling(Context context) {
         super(context);
         init(context);
     }
 
-    public SLotImageScrolling(Context context, AttributeSet attrs) {
+    public SlotImageScrolling(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }

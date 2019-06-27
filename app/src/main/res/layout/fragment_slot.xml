@@ -31,17 +31,17 @@
                     android:layout_gravity="center"
                     android:orientation="horizontal">
 
-                    <com.example.randomgame.Utils.SLotImageScrolling
+                    <com.example.randomgame.Utils.SlotImageScrolling
                         android:id="@+id/slot1_img1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-                    <com.example.randomgame.Utils.SLotImageScrolling
+                    <com.example.randomgame.Utils.SlotImageScrolling
                         android:id="@+id/slot1_img2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-                    <com.example.randomgame.Utils.SLotImageScrolling
+                    <com.example.randomgame.Utils.SlotImageScrolling
                         android:id="@+id/slot1_img3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -74,17 +74,17 @@
                     android:layout_gravity="center"
                     android:orientation="horizontal">
 
-                    <com.example.randomgame.Utils.SLotImageScrolling
+                    <com.example.randomgame.Utils.SlotImageScrolling
                         android:id="@+id/slot2_img1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-                    <com.example.randomgame.Utils.SLotImageScrolling
+                    <com.example.randomgame.Utils.SlotImageScrolling
                         android:id="@+id/slot2_img2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-                    <com.example.randomgame.Utils.SLotImageScrolling
+                    <com.example.randomgame.Utils.SlotImageScrolling
                         android:id="@+id/slot2_img3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -117,17 +117,17 @@
                     android:layout_gravity="center"
                     android:orientation="horizontal">
 
-                    <com.example.randomgame.Utils.SLotImageScrolling
+                    <com.example.randomgame.Utils.SlotImageScrolling
                         android:id="@+id/slot3_img1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-                    <com.example.randomgame.Utils.SLotImageScrolling
+                    <com.example.randomgame.Utils.SlotImageScrolling
                         android:id="@+id/slot3_img2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-                    <com.example.randomgame.Utils.SLotImageScrolling
+                    <com.example.randomgame.Utils.SlotImageScrolling
                         android:id="@+id/slot3_img3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
