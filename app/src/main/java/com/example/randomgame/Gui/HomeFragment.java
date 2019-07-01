@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.example.randomgame.Gui.Dice.DiceFragment;
 import com.example.randomgame.Gui.Slot.SlotFragment;
+import com.example.randomgame.Gui.Spin.SpinFragment;
 import com.example.randomgame.R;
 
 import butterknife.BindView;
@@ -67,10 +68,10 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    public void openFragment(Fragment fragment){
+    public void openFragment(Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.container, fragment)
-                .addToBackStack(null)
+                .addToBackStack(fragment.getClass().getName())
                 .commit();
     }
 }

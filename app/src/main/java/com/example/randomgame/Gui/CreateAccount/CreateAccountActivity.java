@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -36,6 +37,7 @@ import butterknife.OnClick;
 public class CreateAccountActivity extends AppCompatActivity implements ICreateAccountView {
 
     private static final String TAG = "CreateAccountActivity";
+    private final static int RC_SIGN_IN = 123;
     @BindView(R.id.name_ET)
     EditText nameET;
     @BindView(R.id.email_ET)
@@ -55,15 +57,15 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
     @BindView(R.id.create_acc_progress)
     SpinKitView createAccProgress;
 
-    private FirebaseAuth mAuth;
-    private final static int RC_SIGN_IN = 123;
     GoogleSignInClient mgoogleSignInClient;
     GoogleApiClient googleApiClient;
     FirebaseUser currentUser;
     CreateAccountPresenter presenter;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         ButterKnife.bind(this);

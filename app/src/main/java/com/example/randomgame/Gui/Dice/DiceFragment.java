@@ -15,11 +15,14 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.example.randomgame.R;
 import com.example.randomgame.Utils.CustomGestureDetector;
 import com.example.randomgame.Utils.IViewFlipper;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,6 +67,12 @@ public class DiceFragment extends Fragment implements IViewFlipper {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dice, container, false);
         unbinder = ButterKnife.bind(this, view);
+        setRandomDice(firstDice1);
+        setRandomDice(secondDice1);
+        setRandomDice(firstDice2);
+        setRandomDice(secondDice2);
+        setRandomDice(firstDice3);
+        setRandomDice(secondDice3);
 
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -117,33 +126,13 @@ public class DiceFragment extends Fragment implements IViewFlipper {
         int currentDice = diceViewFlipper.getDisplayedChild();
         switch (view.getId()) {
             case R.id.dice_btn1:
-                RotateAnimation rotate = new RotateAnimation(0, 360 * 20, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-                rotate.setDuration(3000);
-                rotate.setInterpolator(new LinearInterpolator());
-
-                rotate.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        firstDice1.setImageResource(R.drawable.dice2);
-                        secondDice1.setImageResource(R.drawable.dice5);
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
-                firstDice1.startAnimation(rotate);
-                secondDice1.startAnimation(rotate);
+                rollDice(firstDice1, secondDice1);
                 break;
             case R.id.dice_btn2:
+                rollDice(firstDice2, secondDice2);
                 break;
             case R.id.dice_btn3:
+                rollDice(firstDice3, secondDice3);
                 break;
             case R.id.dice_icon1:
                 if (currentDice == 1 || currentDice == 2) {
@@ -178,5 +167,57 @@ public class DiceFragment extends Fragment implements IViewFlipper {
                 }
                 break;
         }
+    }
+
+    private void rollDice(final ImageView dice1, final ImageView dice2) {
+        RotateAnimation rotate = new RotateAnimation(0, 360 * 20, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        rotate.setDuration(3000);
+        rotate.setInterpolator(new LinearInterpolator());
+
+        rotate.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                setRandomDice(dice1);
+                setRandomDice(dice2);
+                Toast.makeText(getContext(), dice1.getTag().toString() + " - " + dice2.getTag().toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        dice1.startAnimation(rotate);
+        dice2.startAnimation(rotate);
+    }
+
+    private void setRandomDice(ImageView diceImage) {
+        int random = ThreadLocalRandom.current().nextInt(1, 6 + 1);
+        switch (random) {
+            case 1:
+                diceImage.setImageResource(R.drawable.dice1);
+                break;
+            case 2:
+                diceImage.setImageResource(R.drawable.dice2);
+                break;
+            case 3:
+                diceImage.setImageResource(R.drawable.dice3);
+                break;
+            case 4:
+                diceImage.setImageResource(R.drawable.dice4);
+                break;
+            case 5:
+                diceImage.setImageResource(R.drawable.dice5);
+                break;
+            case 6:
+                diceImage.setImageResource(R.drawable.dice6);
+                break;
+        }
+        diceImage.setTag(random);
     }
 }

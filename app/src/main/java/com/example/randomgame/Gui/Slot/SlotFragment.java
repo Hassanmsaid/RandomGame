@@ -32,6 +32,7 @@ import static com.example.randomgame.Utils.CommonMethods.setIconsSize;
 
 public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlipper {
 
+    private final static int MAX_SLOT_COUNT = 50, MIN_SLOT_COUNT = 30;
     int count_done = 0;
     GestureDetector gestureDetector;
 
@@ -73,10 +74,6 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_slot, container, false);
-
-        //Clone test 1
-        //Clone test 2
-
         unbinder = ButterKnife.bind(this, view);
 
         slot1Img1.setSlotEventEnd(this);
@@ -97,7 +94,6 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
             }
         });
 
-//        slotViewFlipper = view.findViewById(R.id.slot_view_flipper);
         return view;
     }
 
@@ -136,30 +132,21 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
 
         switch (view.getId()) {
             case R.id.slot_btn1:
-                slot1Img1.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
-                        new Random().nextInt((50 - 30) + 1) + 30);
-                slot1Img2.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
-                        new Random().nextInt((50 - 30) + 1) + 30);
-                slot1Img3.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
-                        new Random().nextInt((50 - 30) + 1) + 30);
+                startSlot(slot1Img1);
+                startSlot(slot1Img2);
+                startSlot(slot1Img3);
                 slotBtn1.setClickable(false);
                 break;
             case R.id.slot_btn2:
-                slot2Img1.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
-                        new Random().nextInt((50 - 30) + 1) + 30);
-                slot2Img2.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
-                        new Random().nextInt((50 - 30) + 1) + 30);
-                slot2Img3.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
-                        new Random().nextInt((50 - 30) + 1) + 30);
+                startSlot(slot2Img1);
+                startSlot(slot2Img2);
+                startSlot(slot2Img3);
                 slotBtn2.setClickable(false);
                 break;
             case R.id.slot_btn3:
-                slot3Img1.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
-                        new Random().nextInt((50 - 30) + 1) + 30);
-                slot3Img2.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
-                        new Random().nextInt((50 - 30) + 1) + 30);
-                slot3Img3.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
-                        new Random().nextInt((50 - 30) + 1) + 30);
+                startSlot(slot3Img1);
+                startSlot(slot3Img2);
+                startSlot(slot3Img3);
                 slotBtn3.setClickable(false);
                 break;
             case R.id.slot_icon1:
@@ -195,6 +182,11 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
                 }
                 break;
         }
+    }
+
+    private void startSlot(SlotImageScrolling image) {
+        image.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
+                new Random().nextInt((MAX_SLOT_COUNT - MIN_SLOT_COUNT) + 1) + MIN_SLOT_COUNT);
     }
 
     @Override

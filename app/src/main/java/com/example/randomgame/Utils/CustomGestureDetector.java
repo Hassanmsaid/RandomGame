@@ -40,22 +40,9 @@ public class CustomGestureDetector extends GestureDetector.SimpleOnGestureListen
                 viewFlipper.showPrevious();
             }
         }
-
         iViewFlipper.resetAllIcons();
 
         iViewFlipper.chooseIcon();
-
-        /*switch (viewFlipper.getDisplayedChild()) {
-            case 0:
-                setIconsSize(diceIcon1, 150);
-                break;
-            case 1:
-                setIconsSize(diceIcon2, 150);
-                break;
-            case 2:
-                setIconsSize(diceIcon3, 150);
-                break;
-        }*/
 
         return super.onFling(e1, e2, velocityX, velocityY);
     }

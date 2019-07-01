@@ -1,4 +1,4 @@
-package com.example.randomgame.Gui;
+package com.example.randomgame.Gui.Spin;
 
 
 import android.media.MediaPlayer;

@@ -6,7 +6,7 @@
     android:background="#0FFF"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingHorizontal="20dp"
+    android:paddingHorizontal="40dp"
     tools:context=".Gui.Dice.DiceFragment">
 
     <ViewFlipper

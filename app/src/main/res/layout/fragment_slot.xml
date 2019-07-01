@@ -26,9 +26,10 @@
                 android:background="@drawable/slot">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <com.example.randomgame.Utils.SlotImageScrolling

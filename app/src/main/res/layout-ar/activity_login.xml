@@ -17,67 +17,10 @@
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/dimen_28dp">
 
-        <!--<ImageView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/title2" />-->
-
-
-        <!--<LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_32dp"
-            android:layout_marginTop="@dimen/dimen_32dp"
-            android:layout_marginEnd="@dimen/dimen_32dp"
-            android:background="@drawable/edittext_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="@dimen/dimen_20dp"
-                android:layout_height="@dimen/dimen_20dp"
-                android:layout_marginStart="15dp"
-                android:src="@drawable/email_icon" />
-
-            <EditText
-                android:id="@+id/login_email_ET"
-                style="@style/EditTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/email_hint"
-                android:inputType="textEmailAddress"
-                android:text="hassan@hotmail.com"
-                android:textAlignment="viewStart" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/edittext_bg">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="15dp"
-                android:src="@drawable/pw_icon" />
-
-            <EditText
-                android:id="@+id/login_password_ET"
-                style="@style/EditTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_alignParentEnd="true"
-                android:hint="@string/password_hint"
-                android:inputType="textPassword"
-                android:text="hassan123"
-                android:textAlignment="viewStart" />
-
-        </RelativeLayout>-->
+            android:src="@drawable/title2" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -96,20 +39,20 @@
 
             <EditText
                 android:id="@+id/login_email_ET"
+                style="@style/EditTextArabicStyle"
                 android:layout_width="match_parent"
                 android:layout_toLeftOf="@+id/login_email_icon"
                 android:hint="@string/email_hint"
                 android:inputType="textEmailAddress"
-                android:text="hassan@hotmail.com"
-                style="@style/EditTextArabicStyle" />
+                android:text="hassan@hotmail.com" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittext_bg"
-            android:layout_marginTop="@dimen/dimen_20dp">
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:background="@drawable/edittext_bg">
 
             <ImageView
                 android:id="@+id/login_password_icon"
@@ -122,12 +65,12 @@
 
             <EditText
                 android:id="@+id/login_password_ET"
+                style="@style/EditTextArabicStyle"
                 android:layout_width="match_parent"
-                android:inputType="textPassword"
                 android:layout_toLeftOf="@+id/login_password_icon"
                 android:hint="@string/password_hint"
-                android:text="hassan123"
-                style="@style/EditTextArabicStyle"/>
+                android:inputType="textPassword"
+                android:text="hassan123" />
 
         </RelativeLayout>
 
@@ -151,8 +94,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="15dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
