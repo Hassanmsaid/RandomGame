@@ -82,7 +82,8 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         if (SplashActivity.FIRST_TIME) {
-            setLanguage();
+//            setLanguage();
+            setLocale(currentLanguage);
             SplashActivity.FIRST_TIME = false;
         }
     }

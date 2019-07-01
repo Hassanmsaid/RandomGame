@@ -50,19 +50,29 @@ public class LoginActivity extends AppCompatActivity implements IloginView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPreferences preferences = getSharedPreferences("lang_pref", MODE_PRIVATE);
+        String currentLanguage = preferences.getString("current_lang", "en");
+        setLocale(currentLanguage);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        SharedPreferences preferences = getSharedPreferences("lang_pref", MODE_PRIVATE);
-        String currentLanguage = preferences.getString("current_lang", "en");
-        //setLocale(currentLanguage);
         Toast.makeText(this, currentLanguage, Toast.LENGTH_SHORT).show();
 
         presenter = new LoginPresenter(this, this);
         mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.login_progress);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences preferences = getSharedPreferences("lang_pref", MODE_PRIVATE);
+        String currentLanguage = preferences.getString("current_lang", "en");
+        setLocale(currentLanguage);
     }
 
     @Override

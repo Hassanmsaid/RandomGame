@@ -35,13 +35,10 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -54,25 +51,26 @@ public class HomeFragment extends Fragment {
 
     @OnClick({R.id.home_dice, R.id.home_lucky, R.id.home_spin, R.id.home_slot})
     public void onViewClicked(View view) {
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
+
         switch (view.getId()) {
             case R.id.home_dice:
-                ft.replace(R.id.container, new DiceFragment())
-                        .addToBackStack(null)
-                        .commit();
+                openFragment(new DiceFragment());
                 break;
             case R.id.home_lucky:
                 break;
             case R.id.home_spin:
-                ft.replace(R.id.container, new SpinFragment())
-                        .addToBackStack(null)
-                        .commit();
+                openFragment(new SpinFragment());
                 break;
             case R.id.home_slot:
-                ft.replace(R.id.container, new SlotFragment())
-                        .addToBackStack(null)
-                        .commit();
+                openFragment(new SlotFragment());
                 break;
         }
+    }
+
+    public void openFragment(Fragment fragment){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.container, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

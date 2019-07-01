@@ -16,7 +16,9 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.example.randomgame.R;
+import com.example.randomgame.Utils.CustomGestureDetector;
 import com.example.randomgame.Utils.ISlotEventEnd;
+import com.example.randomgame.Utils.IViewFlipper;
 import com.example.randomgame.Utils.SlotImageScrolling;
 
 import java.util.Random;
@@ -26,9 +28,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-import static com.example.randomgame.Gui.SpinFragment.setIconsSize;
+import static com.example.randomgame.Utils.CommonMethods.setIconsSize;
 
-public class SlotFragment extends Fragment implements ISlotEventEnd {
+public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlipper {
 
     int count_done = 0;
     GestureDetector gestureDetector;
@@ -95,14 +97,14 @@ public class SlotFragment extends Fragment implements ISlotEventEnd {
             }
         });
 
-        slotViewFlipper = view.findViewById(R.id.slot_view_flipper);
+//        slotViewFlipper = view.findViewById(R.id.slot_view_flipper);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SlotFragment.CustomGestureDetector customGestureDetector = new CustomGestureDetector();
+        CustomGestureDetector customGestureDetector = new CustomGestureDetector(getContext(), slotViewFlipper, this);
         gestureDetector = new GestureDetector(getContext(), customGestureDetector);
         resetAllIcons();
         setIconsSize(slotIcon1, 150);
@@ -195,50 +197,25 @@ public class SlotFragment extends Fragment implements ISlotEventEnd {
         }
     }
 
-
-    private void resetAllIcons() {
+    @Override
+    public void resetAllIcons() {
         setIconsSize(slotIcon1, 100);
         setIconsSize(slotIcon2, 100);
         setIconsSize(slotIcon3, 100);
     }
 
-    class CustomGestureDetector extends GestureDetector.SimpleOnGestureListener {
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-
-            // Swipe left (next)
-            if (e1.getX() > e2.getX()) {
-                if (slotViewFlipper.getDisplayedChild() != 2) {
-                    slotViewFlipper.setInAnimation(getContext(), R.anim.slide_in_right);
-                    slotViewFlipper.setOutAnimation(getContext(), R.anim.slide_out_left);
-                    slotViewFlipper.showNext();
-                }
-            }
-
-            // Swipe right (previous)
-            if (e1.getX() < e2.getX()) {
-                if (slotViewFlipper.getDisplayedChild() != 0) {
-                    slotViewFlipper.setInAnimation(getContext(), android.R.anim.slide_in_left);
-                    slotViewFlipper.setOutAnimation(getContext(), android.R.anim.slide_out_right);
-                    slotViewFlipper.showPrevious();
-                }
-            }
-
-            resetAllIcons();
-
-            switch (slotViewFlipper.getDisplayedChild()) {
-                case 0:
-                    setIconsSize(slotIcon1, 150);
-                    break;
-                case 1:
-                    setIconsSize(slotIcon2, 150);
-                    break;
-                case 2:
-                    setIconsSize(slotIcon3, 150);
-                    break;
-            }
-
-            return super.onFling(e1, e2, velocityX, velocityY);
+    @Override
+    public void chooseIcon() {
+        switch (slotViewFlipper.getDisplayedChild()) {
+            case 0:
+                setIconsSize(slotIcon1, 150);
+                break;
+            case 1:
+                setIconsSize(slotIcon2, 150);
+                break;
+            case 2:
+                setIconsSize(slotIcon3, 150);
+                break;
         }
     }
 }

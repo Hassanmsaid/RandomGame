@@ -43,6 +43,64 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/first_dice2"
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:layout_gravity="right"
+                android:layout_marginEnd="@dimen/dimen_20dp"
+                android:src="@drawable/dice1" />
+
+            <ImageView
+                android:id="@+id/second_dice2"
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:layout_gravity="left"
+                android:layout_marginStart="@dimen/dimen_20dp"
+                android:src="@drawable/dice4" />
+
+            <TextView
+                android:id="@+id/dice_btn2"
+                style="@style/PlayButtonStyle"
+                android:text="@string/roll_btn" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/first_dice3"
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:layout_gravity="right"
+                android:layout_marginEnd="@dimen/dimen_20dp"
+                android:src="@drawable/dice1" />
+
+            <ImageView
+                android:id="@+id/second_dice3"
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:layout_gravity="left"
+                android:layout_marginStart="@dimen/dimen_20dp"
+                android:src="@drawable/dice4" />
+
+            <TextView
+                android:id="@+id/dice_btn3"
+                style="@style/PlayButtonStyle"
+                android:text="@string/roll_btn" />
+
+        </LinearLayout>
+
     </ViewFlipper>
 
     <LinearLayout

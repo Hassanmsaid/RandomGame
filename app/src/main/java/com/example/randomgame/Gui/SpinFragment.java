@@ -14,13 +14,14 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.example.randomgame.R;
+import com.example.randomgame.Utils.CustomGestureDetector;
+import com.example.randomgame.Utils.IViewFlipper;
 
 import java.util.Random;
 
@@ -29,7 +30,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-public class SpinFragment extends Fragment {
+import static com.example.randomgame.Utils.CommonMethods.setIconsSize;
+
+public class SpinFragment extends Fragment implements IViewFlipper {
 
     GestureDetector gestureDetector;
     ImageView selectedWheel;
@@ -85,7 +88,7 @@ public class SpinFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        CustomGestureDetector customGestureDetector = new CustomGestureDetector();
+        CustomGestureDetector customGestureDetector = new CustomGestureDetector(getContext(), viewFlipper, this);
         gestureDetector = new GestureDetector(getContext(), customGestureDetector);
         resetAllIcons();
         setIconsSize(spinIcon1, 150);
@@ -260,53 +263,25 @@ public class SpinFragment extends Fragment {
         }
     }
 
+    @Override
     public void resetAllIcons() {
         setIconsSize(spinIcon1, 100);
         setIconsSize(spinIcon2, 100);
         setIconsSize(spinIcon3, 100);
     }
 
-    public static void setIconsSize(View view, int dimen) {
-        view.getLayoutParams().width = dimen;
-        view.getLayoutParams().height = dimen;
-    }
-
-    class CustomGestureDetector extends GestureDetector.SimpleOnGestureListener {
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-
-            // Swipe left (next)
-            if (e1.getX() > e2.getX()) {
-                if (viewFlipper.getDisplayedChild() != 2) {
-                    viewFlipper.setInAnimation(getContext(), R.anim.slide_in_right);
-                    viewFlipper.setOutAnimation(getContext(), R.anim.slide_out_left);
-                    viewFlipper.showNext();
-                }
-            }
-
-            // Swipe right (previous)
-            if (e1.getX() < e2.getX()) {
-                if (viewFlipper.getDisplayedChild() != 0) {
-                    viewFlipper.setInAnimation(getContext(), android.R.anim.slide_in_left);
-                    viewFlipper.setOutAnimation(getContext(), android.R.anim.slide_out_right);
-                    viewFlipper.showPrevious();
-                }
-            }
-
-            resetAllIcons();
-
-            switch (viewFlipper.getDisplayedChild()) {
-                case 0:
-                    setIconsSize(spinIcon1, 150);
-                    break;
-                case 1:
-                    setIconsSize(spinIcon2, 150);
-                    break;
-                case 2:
-                    setIconsSize(spinIcon3, 150);
-                    break;
-            }
-            return super.onFling(e1, e2, velocityX, velocityY);
+    @Override
+    public void chooseIcon() {
+        switch (viewFlipper.getDisplayedChild()) {
+            case 0:
+                setIconsSize(spinIcon1, 150);
+                break;
+            case 1:
+                setIconsSize(spinIcon2, 150);
+                break;
+            case 2:
+                setIconsSize(spinIcon3, 150);
+                break;
         }
     }
 }

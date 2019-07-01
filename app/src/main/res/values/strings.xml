@@ -9,5 +9,13 @@
     <string name="rotate_btn_txt">Rotate</string>
     <string name="login_btn">Login</string>
     <string name="roll_btn">Roll</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="don_t_have_account_tx">Don\'t have an account ? Create one</string>
+    <string name="continue_with_txt">Or continue with</string>
+    <string name="country">Country</string>
+    <string name="phone">Phone</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="name">Name</string>
 
 </resources>

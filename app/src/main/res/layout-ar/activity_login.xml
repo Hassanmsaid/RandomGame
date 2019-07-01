@@ -9,31 +9,33 @@
     android:orientation="vertical"
     tools:context=".Gui.Login.LoginActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_blue"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_28dp">
 
-        <ImageView
+        <!--<ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/title2" />
+            android:src="@drawable/title2" />-->
 
-        <RelativeLayout
+
+        <!--<LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_32dp"
             android:layout_marginTop="@dimen/dimen_32dp"
             android:layout_marginEnd="@dimen/dimen_32dp"
-            android:background="@drawable/edittext_bg">
+            android:background="@drawable/edittext_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="@dimen/dimen_20dp"
                 android:layout_height="@dimen/dimen_20dp"
-                android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
                 android:src="@drawable/email_icon" />
 
@@ -42,12 +44,12 @@
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Email"
+                android:hint="@string/email_hint"
                 android:inputType="textEmailAddress"
                 android:text="hassan@hotmail.com"
                 android:textAlignment="viewStart" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -70,10 +72,62 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
-                android:hint="Password"
+                android:hint="@string/password_hint"
                 android:inputType="textPassword"
                 android:text="hassan123"
                 android:textAlignment="viewStart" />
+
+        </RelativeLayout>-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:background="@drawable/edittext_bg">
+
+            <ImageView
+                android:id="@+id/login_email_icon"
+                android:layout_width="@dimen/dimen_20dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="15dp"
+                android:src="@drawable/email_icon" />
+
+            <EditText
+                android:id="@+id/login_email_ET"
+                android:layout_width="match_parent"
+                android:layout_toLeftOf="@+id/login_email_icon"
+                android:hint="@string/email_hint"
+                android:inputType="textEmailAddress"
+                android:text="hassan@hotmail.com"
+                style="@style/EditTextArabicStyle" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_bg"
+            android:layout_marginTop="@dimen/dimen_20dp">
+
+            <ImageView
+                android:id="@+id/login_password_icon"
+                android:layout_width="@dimen/dimen_20dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="15dp"
+                android:src="@drawable/pw_icon" />
+
+            <EditText
+                android:id="@+id/login_password_ET"
+                android:layout_width="match_parent"
+                android:inputType="textPassword"
+                android:layout_toLeftOf="@+id/login_password_icon"
+                android:hint="@string/password_hint"
+                android:text="hassan123"
+                style="@style/EditTextArabicStyle"/>
 
         </RelativeLayout>
 
@@ -83,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:background="@drawable/btn_bg"
-            android:text="Login"
+            android:text="@string/login_btn"
             android:textColor="@color/white" />
 
         <TextView
@@ -91,20 +145,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_20dp"
-            android:text="Don't have an account ? Create one"
+            android:text="@string/don_t_have_account_tx"
             android:textColor="@color/white" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Or continue with"
-                android:textColor="@color/white" />
 
             <ImageView
                 android:layout_width="@dimen/dimen_40dp"
@@ -117,8 +166,13 @@
                 android:layout_height="50dp"
                 android:src="@drawable/fb_icon" />
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/continue_with_txt"
+                android:textColor="@color/white" />
 
+        </LinearLayout>
 
     </LinearLayout>
 
