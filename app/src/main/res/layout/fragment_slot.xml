@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/slot_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0FFF"
@@ -35,17 +36,20 @@
                     <com.example.randomgame.Utils.SlotImageScrolling
                         android:id="@+id/slot1_img1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        />
 
                     <com.example.randomgame.Utils.SlotImageScrolling
                         android:id="@+id/slot1_img2"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                         />
 
                     <com.example.randomgame.Utils.SlotImageScrolling
                         android:id="@+id/slot1_img3"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                         />
 
                 </LinearLayout>
 
@@ -54,7 +58,7 @@
             <TextView
                 android:id="@+id/slot_btn1"
                 style="@style/PlayButtonStyle"
-                android:text="Start" />
+                android:text="@string/start_slot_btn" />
 
         </LinearLayout>
 
@@ -97,7 +101,7 @@
             <TextView
                 android:id="@+id/slot_btn2"
                 style="@style/PlayButtonStyle"
-                android:text="Start" />
+                android:text="@string/start_slot_btn" />
 
         </LinearLayout>
 
@@ -140,7 +144,7 @@
             <TextView
                 android:id="@+id/slot_btn3"
                 style="@style/PlayButtonStyle"
-                android:text="Start" />
+                android:text="@string/start_slot_btn" />
 
         </LinearLayout>
 

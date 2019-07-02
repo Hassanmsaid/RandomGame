@@ -177,7 +177,7 @@ public class DiceFragment extends Fragment implements IViewFlipper {
         rotate.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
+                disableSlotButtons();
             }
 
             @Override
@@ -185,6 +185,7 @@ public class DiceFragment extends Fragment implements IViewFlipper {
                 setRandomDice(dice1);
                 setRandomDice(dice2);
                 Toast.makeText(getContext(), dice1.getTag().toString() + " - " + dice2.getTag().toString(), Toast.LENGTH_SHORT).show();
+                enableSlotButtons();
             }
 
             @Override
@@ -194,6 +195,18 @@ public class DiceFragment extends Fragment implements IViewFlipper {
         });
         dice1.startAnimation(rotate);
         dice2.startAnimation(rotate);
+    }
+
+    private void disableSlotButtons(){
+        diceBtn1.setClickable(false);
+        diceBtn2.setClickable(false);
+        diceBtn3.setClickable(false);
+    }
+
+    private void enableSlotButtons(){
+        diceBtn1.setClickable(true);
+        diceBtn2.setClickable(true);
+        diceBtn3.setClickable(true);
     }
 
     private void setRandomDice(ImageView diceImage) {

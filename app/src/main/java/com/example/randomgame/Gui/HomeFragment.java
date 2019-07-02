@@ -32,10 +32,6 @@ public class HomeFragment extends Fragment {
     ImageView homeSlot;
     Unbinder unbinder;
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

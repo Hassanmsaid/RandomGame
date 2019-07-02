@@ -6,11 +6,12 @@
     tools:context=".Gui.Leaderboard.LeaderboardFragment">
 
     <TextView
+        android:id="@+id/leaderboard_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Font"
-        android:textColor="@color/colorPrimary"
+        android:text="LEADERBOARD"
+        android:textColor="@color/colorAccent"
         android:textSize="30sp"
         android:fontFamily="@font/luckiestguy_regular"/>
 </FrameLayout>

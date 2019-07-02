@@ -16,8 +16,6 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.example.randomgame.Gui.Leaderboard.LeaderboardFragment;
 import com.example.randomgame.Gui.Login.LoginActivity;
@@ -104,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
                         }
                     })
                     .setNegativeButton("Cancel", null)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setIcon(R.drawable.ic_warning)
                     .show();
         } else {
             super.onBackPressed();
@@ -121,14 +119,17 @@ public class HomeActivity extends AppCompatActivity {
                     case "en":
                         setLocale("fr");
                         langBtn.setImageDrawable(getResources().getDrawable(R.drawable.french_icon));
+                        currentLanguage = "fr";
                         break;
                     case "fr":
                         setLocale("ar");
                         langBtn.setImageDrawable(getResources().getDrawable(R.drawable.arabic_icon));
+                        currentLanguage = "ar";
                         break;
                     case "ar":
                         setLocale("en");
                         langBtn.setImageDrawable(getResources().getDrawable(R.drawable.english_icon));
+                        currentLanguage = "en";
                         break;
                 }
                 break;
@@ -154,7 +155,7 @@ public class HomeActivity extends AppCompatActivity {
                             }
                         })
                         .setNegativeButton("Cancel", null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setIcon(R.drawable.ic_warning)
                         .show();
                 break;
         }

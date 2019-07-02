@@ -5,14 +5,17 @@
 
     <ImageView
         android:id="@+id/current_image"
-        android:layout_width="110dp"
-        android:layout_height="130dp"
+        android:layout_width="80dp"
+        android:layout_height="140dp"
+        android:scaleType="fitXY"
         android:src="@drawable/slot_image1"/>
 
     <ImageView
         android:id="@+id/next_image"
-        android:layout_width="110dp"
-        android:layout_height="130dp"
-        android:src="@drawable/slot_image4"/>
+        android:layout_width="80dp"
+        android:layout_height="140dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/slot_image4"
+        android:visibility="visible"/>
 
 </FrameLayout>

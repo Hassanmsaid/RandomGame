@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -28,12 +29,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
+import static com.example.randomgame.Utils.CommonMethods.enableDisableViewGroup;
 import static com.example.randomgame.Utils.CommonMethods.setIconsSize;
 
 public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlipper {
 
     private final static int MAX_SLOT_COUNT = 50, MIN_SLOT_COUNT = 30;
-    int count_done = 0;
+    int count_done = 0, currentSlot;
     GestureDetector gestureDetector;
 
     @BindView(R.id.slot1_img1)
@@ -69,6 +71,8 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
     @BindView(R.id.slot_icon3)
     ImageView slotIcon3;
     Unbinder unbinder;
+    @BindView(R.id.slot_layout)
+    LinearLayout slotLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,7 +97,6 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
                 return true;
             }
         });
-
         return view;
     }
 
@@ -112,10 +115,28 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
             count_done++;
         } else {
             count_done = 0;
-            Toast.makeText(getContext(), "DONE !!", Toast.LENGTH_SHORT).show();
             slotBtn1.setClickable(true);
             slotBtn2.setClickable(true);
             slotBtn3.setClickable(true);
+
+            currentSlot = slotViewFlipper.getDisplayedChild();
+            switch (currentSlot) {
+                case 0:
+                    Toast.makeText(getContext(), slot1Img1.getValue() + String.valueOf(slot1Img2.getValue()) + slot1Img3.getValue(), Toast.LENGTH_SHORT).show();
+                    break;
+                case 1:
+                    Toast.makeText(getContext(), slot2Img1.getValue() + String.valueOf(slot2Img2.getValue()) + slot2Img3.getValue(), Toast.LENGTH_SHORT).show();
+                    break;
+                case 2:
+                    Toast.makeText(getContext(), slot3Img1.getValue() + String.valueOf(slot3Img2.getValue()) + slot3Img3.getValue(), Toast.LENGTH_SHORT).show();
+                    break;
+            }
+
+            /*Toast.makeText(getContext(), slot1Img1.getValue() + String.valueOf(slot1Img2.getValue()) + slot1Img3.getValue(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), slot2Img1.getValue() + String.valueOf(slot2Img2.getValue()) + slot2Img3.getValue(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), slot3Img1.getValue() + String.valueOf(slot3Img2.getValue()) + slot3Img3.getValue(), Toast.LENGTH_SHORT).show();*/
+            /*TODO: Handle swipe while animation*/
+            enableDisableViewGroup(slotLayout, true);
         }
     }
 
@@ -128,26 +149,26 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
     @OnClick({R.id.slot_btn1, R.id.slot_btn2, R.id.slot_btn3, R.id.slot_icon1, R.id.slot_icon2, R.id.slot_icon3})
     public void onViewClicked(View view) {
 
-        int currentSlot = slotViewFlipper.getDisplayedChild();
+        currentSlot = slotViewFlipper.getDisplayedChild();
 
         switch (view.getId()) {
             case R.id.slot_btn1:
                 startSlot(slot1Img1);
                 startSlot(slot1Img2);
                 startSlot(slot1Img3);
-                slotBtn1.setClickable(false);
+//                disableSlotButtons();
                 break;
             case R.id.slot_btn2:
                 startSlot(slot2Img1);
                 startSlot(slot2Img2);
                 startSlot(slot2Img3);
-                slotBtn2.setClickable(false);
+//                disableSlotButtons();
                 break;
             case R.id.slot_btn3:
                 startSlot(slot3Img1);
                 startSlot(slot3Img2);
                 startSlot(slot3Img3);
-                slotBtn3.setClickable(false);
+//                disableSlotButtons();
                 break;
             case R.id.slot_icon1:
                 if (currentSlot == 1 || currentSlot == 2) {
@@ -184,9 +205,16 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
         }
     }
 
+    private void disableSlotButtons() {
+        slotBtn1.setClickable(false);
+        slotBtn2.setClickable(false);
+        slotBtn3.setClickable(false);
+    }
+
     private void startSlot(SlotImageScrolling image) {
-        image.setValueRandom(new Random().nextInt(SlotImageScrolling.NUM_OF_IMAGES),
+        image.setValueRandom(new Random().nextInt(6) + 1,
                 new Random().nextInt((MAX_SLOT_COUNT - MIN_SLOT_COUNT) + 1) + MIN_SLOT_COUNT);
+        enableDisableViewGroup(slotLayout, false);
     }
 
     @Override

@@ -8,7 +8,7 @@
     <string name="fb_login_protocol_scheme">fb348049959438380</string>
     <string name="rotate_btn_txt">ROTATE</string>
     <string name="login_btn">Login</string>
-    <string name="roll_btn">Roll</string>
+    <string name="roll_btn">ROLL</string>
     <string name="password_hint">Password</string>
     <string name="email_hint">Email</string>
     <string name="don_t_have_account_tx">Don\'t have an account ? Create one</string>
@@ -17,5 +17,6 @@
     <string name="phone">Phone</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="name">Name</string>
+    <string name="start_slot_btn">START</string>
 
 </resources>
