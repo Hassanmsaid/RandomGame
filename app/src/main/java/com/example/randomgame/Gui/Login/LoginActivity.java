@@ -2,9 +2,12 @@ package com.example.randomgame.Gui.Login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -29,6 +32,7 @@ import butterknife.OnClick;
 public class LoginActivity extends AppCompatActivity implements IloginView {
 
     private static final String TAG = "LoginActivity";
+    Locale myLocale;
 
     @BindView(R.id.login_email_ET)
     EditText loginEmailET;
@@ -47,6 +51,10 @@ public class LoginActivity extends AppCompatActivity implements IloginView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        SharedPreferences preferences = getSharedPreferences("lang_pref", MODE_PRIVATE);
+        String currentLanguage = preferences.getString("current_lang", "en");
+        setLocale(currentLanguage);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -55,6 +63,14 @@ public class LoginActivity extends AppCompatActivity implements IloginView {
         presenter = new LoginPresenter(this, this);
         mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.login_progress);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences preferences = getSharedPreferences("lang_pref", MODE_PRIVATE);
+        String currentLanguage = preferences.getString("current_lang", "en");
+        setLocale(currentLanguage);
     }
 
     @Override
@@ -105,6 +121,15 @@ public class LoginActivity extends AppCompatActivity implements IloginView {
     @Override
     public void loading() {
         progressBar.setVisibility(View.VISIBLE);
+    }
+
+    public void setLocale(String localeName) {
+        myLocale = new Locale(localeName);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
     }
 }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_blue"
     android:gravity="center"
     android:orientation="vertical"
@@ -34,11 +34,11 @@
             <EditText
                 android:id="@+id/name_ET"
                 style="@style/EditTextStyle"
-                android:inputType="textCapWords"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="viewStart"
-                android:hint="Name" />
+                android:hint="@string/name"
+                android:inputType="textCapWords"
+                android:textAlignment="viewStart" />
 
         </RelativeLayout>
 
@@ -60,11 +60,11 @@
             <EditText
                 android:id="@+id/email_ET"
                 style="@style/EditTextStyle"
-                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="viewStart"
-                android:hint="Email" />
+                android:hint="@string/email_hint"
+                android:inputType="textEmailAddress"
+                android:textAlignment="viewStart" />
 
         </RelativeLayout>
 
@@ -86,11 +86,11 @@
             <EditText
                 android:id="@+id/password_ET"
                 style="@style/EditTextStyle"
-                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="viewStart"
-                android:hint="Password" />
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textAlignment="viewStart" />
 
         </RelativeLayout>
 
@@ -112,11 +112,11 @@
             <EditText
                 android:id="@+id/confirm_password_ET"
                 style="@style/EditTextStyle"
-                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="viewStart"
-                android:hint="Confirm Password" />
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:textAlignment="viewStart" />
 
         </RelativeLayout>
 
@@ -138,11 +138,11 @@
             <EditText
                 android:id="@+id/phone_ET"
                 style="@style/EditTextStyle"
-                android:inputType="phone"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="viewStart"
-                android:hint="Phone" />
+                android:hint="Phone"
+                android:inputType="phone"
+                android:textAlignment="viewStart" />
 
         </RelativeLayout>
 
@@ -164,11 +164,11 @@
             <EditText
                 android:id="@+id/country_ET"
                 style="@style/EditTextStyle"
-                android:inputType="textCapWords"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="viewStart"
-                android:hint="Country" />
+                android:hint="Country"
+                android:inputType="textCapWords"
+                android:textAlignment="viewStart" />
 
         </RelativeLayout>
 
@@ -192,7 +192,7 @@
             android:layout_width="@dimen/dimen_40dp"
             android:layout_height="@dimen/dimen_40dp"
             android:layout_marginTop="@dimen/dimen_20dp"
-            android:src="@drawable/google_icon"/>
+            android:src="@drawable/google_icon" />
 
     </LinearLayout>
 
@@ -203,11 +203,11 @@
 
         <com.github.ybq.android.spinkit.SpinKitView
             android:id="@+id/create_acc_progress"
+            style="@style/SpinKitView.Large.Circle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/SpinKitView.Large.Circle"
             android:visibility="gone"
-            app:SpinKit_Color="@color/colorAccent"/>
+            app:SpinKit_Color="@color/colorAccent" />
 
     </FrameLayout>
 

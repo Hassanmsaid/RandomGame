@@ -104,7 +104,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Or continue with"
+                android:text="@string/continue_with_txt"
                 android:textColor="@color/white" />
 
             <ImageView

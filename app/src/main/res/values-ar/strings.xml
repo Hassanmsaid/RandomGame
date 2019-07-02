@@ -12,4 +12,8 @@
     <string name="phone">الهاتف</string>
     <string name="confirm_password">تأكيد كلمة السر</string>
     <string name="name">الاسم</string>
+    <string name="start_slot_btn">ابدأ</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="logout_sure">هل أنت متأكد أنك تريد تسجيل الخروج؟</string>
+    <string name="cancel">الغاء</string>
 </resources>

@@ -146,15 +146,15 @@ public class HomeActivity extends AppCompatActivity {
                 break;
             case R.id.close_btn:
                 new AlertDialog.Builder(HomeActivity.this)
-                        .setTitle("Logout")
-                        .setMessage("Are you sure you want to logout?")
-                        .setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                        .setTitle(R.string.logout)
+                        .setMessage(R.string.logout_sure)
+                        .setPositiveButton(R.string.logout, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 FirebaseAuth.getInstance().signOut();
                                 startActivity(new Intent(HomeActivity.this, LoginActivity.class));
                             }
                         })
-                        .setNegativeButton("Cancel", null)
+                        .setNegativeButton(R.string.cancel, null)
                         .setIcon(R.drawable.ic_warning)
                         .show();
                 break;
