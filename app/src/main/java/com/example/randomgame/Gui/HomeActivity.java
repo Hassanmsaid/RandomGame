@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
 
     Locale myLocale;
     String currentLanguage = "en";
-
+    AlertDialog.Builder builder;
     HomeFragment homeFragment;
 
     @Override
@@ -93,15 +93,19 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (homeFragment.isVisible()) {
-            new AlertDialog.Builder(HomeActivity.this)
-                    .setTitle("CLose App")
-                    .setMessage("Are you sure you want to close the App?")
-                    .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+            if (currentLanguage.equals("ar")) {
+                builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
+            } else {
+                builder = new AlertDialog.Builder(this);
+            }
+            builder.setTitle(R.string.close_app)
+                    .setMessage(R.string.close_sure)
+                    .setPositiveButton(R.string.close, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             finish();
                         }
                     })
-                    .setNegativeButton("Cancel", null)
+                    .setNegativeButton(R.string.cancel, null)
                     .setIcon(R.drawable.ic_warning)
                     .show();
         } else {
@@ -145,8 +149,12 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.settings_btn:
                 break;
             case R.id.close_btn:
-                new AlertDialog.Builder(HomeActivity.this)
-                        .setTitle(R.string.logout)
+                if (currentLanguage.equals("ar")) {
+                    builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
+                } else {
+                    builder = new AlertDialog.Builder(this);
+                }
+                builder.setTitle(R.string.logout)
                         .setMessage(R.string.logout_sure)
                         .setPositiveButton(R.string.logout, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {

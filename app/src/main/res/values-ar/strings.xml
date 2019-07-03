@@ -9,11 +9,15 @@
     <string name="password_hint">كلمة السر</string>
     <string name="continue_with_txt">أو استمر عن طريق</string>
     <string name="country">البلد</string>
-    <string name="phone">الهاتف</string>
     <string name="confirm_password">تأكيد كلمة السر</string>
     <string name="name">الاسم</string>
     <string name="start_slot_btn">ابدأ</string>
     <string name="logout">تسجيل الخروج</string>
     <string name="logout_sure">هل أنت متأكد أنك تريد تسجيل الخروج؟</string>
     <string name="cancel">الغاء</string>
+    <string name="close_app">إغلاق التطبيق</string>
+    <string name="close_sure">هل أنت متأكد من أنك تريد إغلاق التطبيق؟</string>
+    <string name="close">إغلاق</string>
+    <string name="create_account_btn">إنشاء حساب</string>
+    <string name="phone">الهاتف</string>
 </resources>

@@ -21,5 +21,9 @@
     <string name="logout">Logout</string>
     <string name="logout_sure">Are you sure you want to logout?</string>
     <string name="cancel">Cancel</string>
+    <string name="close_app">CLose App</string>
+    <string name="close_sure">Are you sure you want to close the App?</string>
+    <string name="close">Close</string>
+    <string name="create_account_btn">Create Account</string>
 
 </resources>

@@ -88,7 +88,7 @@
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Password"
+                android:hint="@string/password_hint"
                 android:inputType="textPassword"
                 android:textAlignment="viewStart" />
 
@@ -114,7 +114,7 @@
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Confirm Password"
+                android:hint="@string/confirm_password"
                 android:inputType="textPassword"
                 android:textAlignment="viewStart" />
 
@@ -140,7 +140,7 @@
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Phone"
+                android:hint="@string/phone"
                 android:inputType="phone"
                 android:textAlignment="viewStart" />
 
@@ -166,7 +166,7 @@
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Country"
+                android:hint="@string/country"
                 android:inputType="textCapWords"
                 android:textAlignment="viewStart" />
 
@@ -178,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:background="@drawable/btn_bg"
-            android:text="Create Account"
+            android:text="@string/create_account_btn"
             android:textColor="@color/white" />
 
         <!--<com.google.android.gms.common.SignInButton
