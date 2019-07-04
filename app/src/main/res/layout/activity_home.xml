@@ -17,15 +17,15 @@
 
         <ImageView
             android:id="@+id/profile_btn"
-            android:layout_width="@dimen/dimen_40dp"
-            android:layout_height="@dimen/dimen_40dp"
+            android:layout_width="@dimen/home_icon_dimen"
+            android:layout_height="@dimen/home_icon_dimen"
             android:layout_marginEnd="@dimen/dimen_28dp"
             android:src="@drawable/profile_icon" />
 
         <ImageView
             android:id="@+id/lang_btn"
-            android:layout_width="@dimen/dimen_40dp"
-            android:layout_height="@dimen/dimen_40dp"
+            android:layout_width="@dimen/home_icon_dimen"
+            android:layout_height="@dimen/home_icon_dimen"
             android:layout_marginEnd="@dimen/dimen_28dp"
             android:tag="1"
             android:src="@drawable/english_icon" />
@@ -39,15 +39,15 @@
 
         <ImageView
             android:id="@+id/sound_btn"
-            android:layout_width="@dimen/dimen_40dp"
-            android:layout_height="@dimen/dimen_40dp"
+            android:layout_width="@dimen/home_icon_dimen"
+            android:layout_height="@dimen/home_icon_dimen"
             android:layout_marginEnd="@dimen/dimen_28dp"
             android:src="@drawable/sound_icon" />
 
         <ImageView
             android:id="@+id/points_btn"
-            android:layout_width="@dimen/dimen_40dp"
-            android:layout_height="@dimen/dimen_40dp"
+            android:layout_width="@dimen/home_icon_dimen"
+            android:layout_height="@dimen/home_icon_dimen"
             android:src="@drawable/points_icon" />
 
     </LinearLayout>
@@ -69,14 +69,14 @@
 
         <ImageView
             android:id="@+id/settings_btn"
-            android:layout_width="@dimen/dimen_40dp"
-            android:layout_height="@dimen/dimen_40dp"
+            android:layout_width="@dimen/home_icon_dimen"
+            android:layout_height="@dimen/home_icon_dimen"
             android:src="@drawable/settings_icon" />
 
         <ImageView
             android:id="@+id/close_btn"
-            android:layout_width="@dimen/dimen_40dp"
-            android:layout_height="@dimen/dimen_40dp"
+            android:layout_width="@dimen/home_icon_dimen"
+            android:layout_height="@dimen/home_icon_dimen"
             android:layout_alignParentEnd="true"
             android:src="@drawable/close_icon" />
 

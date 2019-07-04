@@ -181,13 +181,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_20dp" />-->
 
-        <ImageView
-            android:id="@+id/create_acc_google_btn"
-            android:layout_width="@dimen/dimen_40dp"
-            android:layout_height="@dimen/dimen_40dp"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:src="@drawable/google_icon"/>
-
     </LinearLayout>
 
     <FrameLayout

@@ -34,10 +34,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.example.randomgame.Utils.CommonMethods.showToast;
+
 public class CreateAccountActivity extends AppCompatActivity implements ICreateAccountView {
 
     private static final String TAG = "CreateAccountActivity";
-    private final static int RC_SIGN_IN = 123;
+
     @BindView(R.id.name_ET)
     EditText nameET;
     @BindView(R.id.email_ET)
@@ -52,13 +54,9 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
     EditText countryET;
     @BindView(R.id.create_acc_btn)
     Button createAccBtn;
-    @BindView(R.id.create_acc_google_btn)
-    ImageView createAccGoogleBtn;
     @BindView(R.id.create_acc_progress)
     SpinKitView createAccProgress;
 
-    GoogleSignInClient mgoogleSignInClient;
-    GoogleApiClient googleApiClient;
     FirebaseUser currentUser;
     CreateAccountPresenter presenter;
     private FirebaseAuth mAuth;
@@ -72,13 +70,7 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
 
         mAuth = FirebaseAuth.getInstance();
 
-        // Configure Google Sign In
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
 
-        mgoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         presenter = new CreateAccountPresenter(this, this);
     }
@@ -90,7 +82,7 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
         currentUser = mAuth.getCurrentUser();
     }
 
-    @OnClick({R.id.create_acc_btn, R.id.create_acc_google_btn})
+    @OnClick({R.id.create_acc_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.create_acc_btn:
@@ -104,85 +96,16 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
                 if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(pw) && !TextUtils.isEmpty(confirmPw)
                         && pw.equals(confirmPw)) {
                     presenter.createAccEmailPassword(email, pw, mAuth, this);
-
                 }
                 break;
-
-            case R.id.create_acc_google_btn:
-                signInGoogle();
-                break;
         }
     }
 
-    public void createAccEmailPassword(String email, String pw) {
-        mAuth.createUserWithEmailAndPassword(email, pw)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "createUserWithEmail:success");
-                            Toast.makeText(CreateAccountActivity.this, "Account Created.",
-                                    Toast.LENGTH_SHORT).show();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            createAccProgress.setVisibility(View.GONE);
-                            startActivity(new Intent(CreateAccountActivity.this, HomeActivity.class));
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            createAccProgress.setVisibility(View.GONE);
-                            Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
 
-    private void signInGoogle() {
-        Intent signInIntent = mgoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-            } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
-                Toast.makeText(CreateAccountActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-                Log.w(TAG, "Google sign in failed", e);
-            }
-        }
-    }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-                            currentUser = mAuth.getCurrentUser();
-//                            FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(new Intent(CreateAccountActivity.this, HomeActivity.class));
-                            Toast.makeText(CreateAccountActivity.this, currentUser.getDisplayName() + " " + currentUser.getEmail(), Toast.LENGTH_SHORT).show();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                        }
-                    }
-                });
-    }
 
     private void printKeyHash() {
 //        PackageInfo info =
@@ -191,8 +114,8 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
     @Override
     public void createAccSuccess() {
         Log.d(TAG, "createUserWithEmail:success");
-        Toast.makeText(CreateAccountActivity.this, "Account Created.",
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(CreateAccountActivity.this, "Account Created.", Toast.LENGTH_SHORT).show();
+        showToast(this, "Account Created.");
         FirebaseUser user = mAuth.getCurrentUser();
         createAccProgress.setVisibility(View.GONE);
         startActivity(new Intent(CreateAccountActivity.this, HomeActivity.class));
@@ -202,8 +125,8 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
     public void createAccFailed() {
 //        Log.w(TAG, "createUserWithEmail:failure", task.getException());
         createAccProgress.setVisibility(View.GONE);
-        Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(CreateAccountActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+        showToast(this, "Authentication failed.");
     }
 
     @Override

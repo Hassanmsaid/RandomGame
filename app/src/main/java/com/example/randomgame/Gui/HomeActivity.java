@@ -1,10 +1,14 @@
 package com.example.randomgame.Gui;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -54,6 +58,7 @@ public class HomeActivity extends AppCompatActivity {
     String currentLanguage = "en";
     AlertDialog.Builder builder;
     HomeFragment homeFragment;
+    public static MediaPlayer mPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,6 +146,26 @@ public class HomeActivity extends AppCompatActivity {
                 openFragment(new LeaderboardFragment());
                 break;
             case R.id.sound_btn:
+                //mute audio
+                AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+//                audioManager.setStreamMute(AudioManager.STREAM_NOTIFICATION, true);
+
+                ///////////////////
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0);
+                } else {
+                    audioManager.setStreamMute(AudioManager.STREAM_MUSIC, true);
+                }
+
+                ///////////////////
+                /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (!audioManager.isStreamMute(stream)) {
+                        savedStreamMuted = true;
+                        audioManager.adjustStreamVolume(stream, AudioManager.ADJUST_MUTE, 0);
+                    }
+                } else {
+                    audioManager.setStreamMute(stream, true);
+                }*/
                 break;
             case R.id.points_btn:
                 break;
@@ -191,5 +216,14 @@ public class HomeActivity extends AppCompatActivity {
         Intent refreshIntent = new Intent(HomeActivity.this, HomeActivity.class);
         startActivity(refreshIntent);
         finish();
+    }
+
+    public void disableAllTouches() {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    public void enableAllTouches() {
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 }

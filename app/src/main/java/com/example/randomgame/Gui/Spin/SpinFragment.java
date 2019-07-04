@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.example.randomgame.Gui.HomeActivity;
 import com.example.randomgame.R;
 import com.example.randomgame.Utils.CustomGestureDetector;
 import com.example.randomgame.Utils.IViewFlipper;
@@ -104,6 +105,8 @@ public class SpinFragment extends Fragment implements IViewFlipper {
         if (!rotating) {
             MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.btn_click_sound1);
             mp.start();
+//            HomeActivity.mPlayer = MediaPlayer.create(getContext(), R.raw.btn_click_sound1);
+//            HomeActivity.mPlayer.start();
 
             long random = new Random().nextInt(360) + 3600;
             RotateAnimation animation = new RotateAnimation(degrees, degrees + random,

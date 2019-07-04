@@ -99,6 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_marginTop="@dimen/dimen_24dp"
             android:orientation="horizontal">
 
             <TextView
@@ -108,14 +109,16 @@
                 android:textColor="@color/white" />
 
             <ImageView
+                android:id="@+id/login_google_btn"
                 android:layout_width="@dimen/dimen_40dp"
                 android:layout_height="@dimen/dimen_40dp"
                 android:layout_marginHorizontal="@dimen/dimen_12dp"
                 android:src="@drawable/google_icon" />
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:id="@+id/login_facebook_btn"
+                android:layout_width="@dimen/home_icon_dimen"
+                android:layout_height="@dimen/home_icon_dimen"
                 android:src="@drawable/fb_icon" />
 
         </LinearLayout>

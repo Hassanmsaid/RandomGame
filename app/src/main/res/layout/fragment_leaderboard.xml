@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/dimen_12dp"
     tools:context=".Gui.Leaderboard.LeaderboardFragment">
 
     <TextView
@@ -11,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="LEADERBOARD"
-        android:textColor="@color/colorAccent"
-        android:textSize="30sp"
-        android:fontFamily="@font/luckiestguy_regular"/>
+        android:paddingTop="@dimen/dimen_16dp"
+        style="@style/PlayButtonStyle"/>
 </FrameLayout>
