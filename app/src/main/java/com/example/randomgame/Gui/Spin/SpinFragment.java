@@ -23,6 +23,11 @@ import com.example.randomgame.Gui.HomeActivity;
 import com.example.randomgame.R;
 import com.example.randomgame.Utils.CustomGestureDetector;
 import com.example.randomgame.Utils.IViewFlipper;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 import java.util.Random;
 
@@ -32,12 +37,15 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 import static com.example.randomgame.Utils.CommonMethods.setIconsSize;
+import static com.example.randomgame.Utils.CommonMethods.showToast;
 
-public class SpinFragment extends Fragment implements IViewFlipper {
+public class SpinFragment extends Fragment implements IViewFlipper, RewardedVideoAdListener {
 
     GestureDetector gestureDetector;
     ImageView selectedWheel;
     ViewFlipper viewFlipper;
+    RewardedVideoAd videoAd;
+    boolean rewarded;
 
     //check if wheel is rotating
     boolean rotating = false;
@@ -72,6 +80,13 @@ public class SpinFragment extends Fragment implements IViewFlipper {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_spin, container, false);
 
+        // Admob
+        MobileAds.initialize(getContext(), "ca-app-pub-3940256099942544~3347511713");
+        videoAd = MobileAds.getRewardedVideoAdInstance(getContext());
+        videoAd.setRewardedVideoAdListener(this);
+        loadRewardedVideoAd();
+        //////////////////////
+
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -84,6 +99,16 @@ public class SpinFragment extends Fragment implements IViewFlipper {
         selectedWheel = view.findViewById(R.id.spinning_wheel1);
         unbinder = ButterKnife.bind(this, view);
         return view;
+    }
+
+    private void loadRewardedVideoAd() {
+        videoAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().build());
+    }
+
+    private void startVideoAd() {
+        if (videoAd.isLoaded()) {
+            videoAd.show();
+        }
     }
 
     @Override
@@ -105,8 +130,6 @@ public class SpinFragment extends Fragment implements IViewFlipper {
         if (!rotating) {
             MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.btn_click_sound1);
             mp.start();
-//            HomeActivity.mPlayer = MediaPlayer.create(getContext(), R.raw.btn_click_sound1);
-//            HomeActivity.mPlayer.start();
 
             long random = new Random().nextInt(360) + 3600;
             RotateAnimation animation = new RotateAnimation(degrees, degrees + random,
@@ -120,11 +143,13 @@ public class SpinFragment extends Fragment implements IViewFlipper {
                 @Override
                 public void onAnimationStart(Animation animation) {
                     rotating = true;
+                    ((HomeActivity) getActivity()).disableAllTouches();
                 }
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
                     int valueWon = (int) (((double) number) - Math.floor(((double) degrees) / (360.0d / ((double) number))));
+                    ((HomeActivity)getActivity()).enableAllTouches();
                     switch (valueWon) {
                         case 1:
                             if (currentWheel == 1)
@@ -258,12 +283,20 @@ public class SpinFragment extends Fragment implements IViewFlipper {
                 spin(1);
                 break;
             case R.id.rotate_btn2:
-                spin(2);
+//                spin(2);
+                rewarded = false;
+                startVideoAd();
                 break;
             case R.id.rotate_btn3:
                 spin(3);
                 break;
         }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        ((HomeActivity)getActivity()).enableAllTouches();
     }
 
     @Override
@@ -286,5 +319,50 @@ public class SpinFragment extends Fragment implements IViewFlipper {
                 setIconsSize(spinIcon3, 150);
                 break;
         }
+    }
+
+    @Override
+    public void onRewardedVideoAdLoaded() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdOpened() {
+
+    }
+
+    @Override
+    public void onRewardedVideoStarted() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdClosed() {
+        loadRewardedVideoAd();
+        if (rewarded) {
+            spin(2);
+        }
+    }
+
+    @Override
+    public void onRewarded(RewardItem rewardItem) {
+        // TODO: handle force close video then rotate again
+        rewarded = true;
+        showToast(getContext(), "Video rewarded");
+    }
+
+    @Override
+    public void onRewardedVideoAdLeftApplication() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdFailedToLoad(int i) {
+
+    }
+
+    @Override
+    public void onRewardedVideoCompleted() {
+
     }
 }
