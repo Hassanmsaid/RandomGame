@@ -78,7 +78,7 @@
             android:layout_width="@dimen/home_icon_dimen"
             android:layout_height="@dimen/home_icon_dimen"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/close_icon" />
+            android:src="@drawable/logout_icon" />
 
     </RelativeLayout>
 

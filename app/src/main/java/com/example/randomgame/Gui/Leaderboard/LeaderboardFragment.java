@@ -39,7 +39,7 @@ public class LeaderboardFragment extends Fragment {
             public void onTick(long millisUntilFinished) {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                     Calendar c = Calendar.getInstance();
-                    leadTxt.setText(c.get(Calendar.HOUR) + " : " + c.get(Calendar.MINUTE) + " : " + c.get(Calendar.SECOND));
+//                    leadTxt.setText(c.get(Calendar.HOUR) + " : " + c.get(Calendar.MINUTE) + " : " + c.get(Calendar.SECOND));
                 }
             }
 

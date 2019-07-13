@@ -20,7 +20,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/title2" />
+            android:src="@drawable/title3" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -36,7 +36,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
                 android:src="@drawable/email_icon" />
-
 
             <EditText
                 android:id="@+id/login_email_ET"
@@ -115,11 +114,17 @@
                 android:layout_marginHorizontal="@dimen/dimen_12dp"
                 android:src="@drawable/google_icon" />
 
-            <ImageView
+<!--            <ImageView
                 android:id="@+id/login_facebook_btn"
                 android:layout_width="@dimen/home_icon_dimen"
                 android:layout_height="@dimen/home_icon_dimen"
-                android:src="@drawable/fb_icon" />
+                android:src="@drawable/fb_icon" />-->
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_facebook_btn"
+                android:layout_width="@dimen/dimen_40dp"
+                android:layout_height="@dimen/dimen_40dp"
+                android:background="@drawable/fb_icon"/>
 
         </LinearLayout>
 

@@ -20,7 +20,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/title2" />
+            android:src="@drawable/title3" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
