@@ -2,7 +2,6 @@ package com.example.randomgame.Gui.Slot;
 
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,6 +22,11 @@ import com.example.randomgame.Utils.CustomGestureDetector;
 import com.example.randomgame.Utils.ISlotEventEnd;
 import com.example.randomgame.Utils.IViewFlipper;
 import com.example.randomgame.Utils.SlotImageScrolling;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 import java.util.Random;
 
@@ -32,12 +36,15 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 import static com.example.randomgame.Utils.CommonMethods.setIconsSize;
+import static com.example.randomgame.Utils.CommonMethods.showToast;
 
-public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlipper {
+public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlipper, RewardedVideoAdListener {
 
     private final static int MAX_SLOT_COUNT = 50, MIN_SLOT_COUNT = 30;
     int count_done = 0, currentSlot;
     GestureDetector gestureDetector;
+    RewardedVideoAd videoAd;
+    boolean rewarded;
 
     @BindView(R.id.slot1_img1)
     SlotImageScrolling slot1Img1;
@@ -80,6 +87,13 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_slot, container, false);
         unbinder = ButterKnife.bind(this, view);
+
+        // Admob
+        MobileAds.initialize(getContext(), "ca-app-pub-3940256099942544~3347511713");
+        videoAd = MobileAds.getRewardedVideoAdInstance(getContext());
+        videoAd.setRewardedVideoAdListener(this);
+        loadRewardedVideoAd();
+        //////////////////////
 
         slot1Img1.setSlotEventEnd(this);
         slot1Img2.setSlotEventEnd(this);
@@ -159,10 +173,8 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
                 ((HomeActivity) getActivity()).disableAllTouches();
                 break;
             case R.id.slot_btn2:
-                startSlot(slot2Img1);
-                startSlot(slot2Img2);
-                startSlot(slot2Img3);
-                ((HomeActivity) getActivity()).disableAllTouches();
+                rewarded = false;
+                startVideoAd();
                 break;
             case R.id.slot_btn3:
                 startSlot(slot3Img1);
@@ -208,7 +220,7 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
     @Override
     public void onDetach() {
         super.onDetach();
-        ((HomeActivity)getActivity()).enableAllTouches();
+        ((HomeActivity) getActivity()).enableAllTouches();
     }
 
     private void disableSlotButtons() {
@@ -220,6 +232,16 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
     private void startSlot(SlotImageScrolling image) {
         image.setValueRandom(new Random().nextInt(6) + 1,
                 new Random().nextInt((MAX_SLOT_COUNT - MIN_SLOT_COUNT) + 1) + MIN_SLOT_COUNT);
+    }
+
+    private void loadRewardedVideoAd() {
+        videoAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().build());
+    }
+
+    private void startVideoAd() {
+        if (videoAd.isLoaded()) {
+            videoAd.show();
+        }
     }
 
     @Override
@@ -243,4 +265,52 @@ public class SlotFragment extends Fragment implements ISlotEventEnd, IViewFlippe
                 break;
         }
     }
+
+    @Override
+    public void onRewardedVideoAdLoaded() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdOpened() {
+
+    }
+
+    @Override
+    public void onRewardedVideoStarted() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdClosed() {
+        loadRewardedVideoAd();
+        if (rewarded) {
+            startSlot(slot2Img1);
+            startSlot(slot2Img2);
+            startSlot(slot2Img3);
+            ((HomeActivity) getActivity()).disableAllTouches();
+        }
+    }
+
+    @Override
+    public void onRewarded(RewardItem rewardItem) {
+        rewarded = true;
+        showToast(getContext(), "Video rewarded");
+    }
+
+    @Override
+    public void onRewardedVideoAdLeftApplication() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdFailedToLoad(int i) {
+
+    }
+
+    @Override
+    public void onRewardedVideoCompleted() {
+
+    }
+
 }

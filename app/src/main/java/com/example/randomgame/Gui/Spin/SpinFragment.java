@@ -149,7 +149,7 @@ public class SpinFragment extends Fragment implements IViewFlipper, RewardedVide
                 @Override
                 public void onAnimationEnd(Animation animation) {
                     int valueWon = (int) (((double) number) - Math.floor(((double) degrees) / (360.0d / ((double) number))));
-                    ((HomeActivity)getActivity()).enableAllTouches();
+                    ((HomeActivity) getActivity()).enableAllTouches();
                     switch (valueWon) {
                         case 1:
                             if (currentWheel == 1)
@@ -296,7 +296,7 @@ public class SpinFragment extends Fragment implements IViewFlipper, RewardedVide
     @Override
     public void onDetach() {
         super.onDetach();
-        ((HomeActivity)getActivity()).enableAllTouches();
+        ((HomeActivity) getActivity()).enableAllTouches();
     }
 
     @Override
